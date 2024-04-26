@@ -1,0 +1,10 @@
+FROM node:alpine
+WORKDIR /prasad-app/src
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
+
+RUN npm install -g
+RUN npm i --legacy-peer-deps
+EXPOSE 3000
+CMD ["npm", "run", "start"]
