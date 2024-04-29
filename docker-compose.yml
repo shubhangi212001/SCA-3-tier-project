@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "5541:8070"
+  
+  frontend:
+    build:
+      context: ./sca_vite
+      dockerfile: Dockerfile 
+    ports:
+      - "5540:3000"
+
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: support#123
+      MYSQL_DATABASE: CSV_DB
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin:5.0.2
+    container_name: phpmyadmin
+    ports:
+      - "8078:80"
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
