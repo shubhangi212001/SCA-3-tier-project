@@ -1,11 +1,6 @@
 pipeline {
     agent any
-
-    environment {
-        GITHUB_CREDENTIALS = credentials('github-credentials')
-        GITHUB_USERNAME = 'github-credentials.username'
-        GITHUB_PASSWORD = 'github-credentials.password'
-    }
+    
     stages {
         stage('Workspace Cleaning'){
             steps{
@@ -14,7 +9,7 @@ pipeline {
         }
         stage("Code"){
             steps{
-                git url: "https://github.com/shubhangi212001/python-fastapi-app.git", branch: "main"
+                git url: "https://github.com/shubhangi212001/SCA-3-tier-project.git", branch: "main"
             }
         }
          stage('Deploy') {
