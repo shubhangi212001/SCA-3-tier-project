@@ -27,15 +27,20 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the image'
-                sh "docker build -t shubhangihshindde/bakend-3tier ."
-                sh "docker build -t shubhangihshind/frontent ./sca_vite"
+                sh "docker build -t bakend-3tier ."
+                sh "docker build -t frontent-3tier ./sca_vite"
             }
         }
         stage('Push') {
             steps {
                 echo 'Pushing docker image on Docker Hub'
-                sh "docker push shubhangihshindde/bakend-3tier:latest"
-                sh "docker push shubhangihshind/frontent:latest"
+                withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', passwordVariable: 'dockerHubpass', usernameVariable: 'dockerHubuser')]) {
+                    sh "docker tag bakend ${env.dockerHubuser}/bakend-3tier:latest"
+                    sh "docker tag frontend ${env.dockerHubuser}/frontend-3tier:latest"
+                    sh "docker login -u ${env.dockerHubuser} -p ${env.dockerHubpass}"
+                    sh "docker push ${env.dockerHubuser}/bakend-3tier:latest"
+                    sh "docker push ${env.dockerHubuser}/frontend-3tier:latest"
+                }
             }
         }
        
