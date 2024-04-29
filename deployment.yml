@@ -55,14 +55,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python
+      app: frontend
   template:
     metadata:
       labels:
-        app: python
+        app: frontend
     spec:
       containers:
-        - name: python
+        - name: frontend
           image: shubhangihshinde/frontend-3tier:latest
           imagePullPolicy: Always
           ports:
@@ -83,7 +83,7 @@ spec:
         app: backend
     spec:
       containers:
-        - name: python
+        - name: backend
           image: shubhangihshinde/backend-3tier:latest
           imagePullPolicy: Always
           ports:
