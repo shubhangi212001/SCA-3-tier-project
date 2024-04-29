@@ -57,7 +57,8 @@ pipeline {
                                 sh 'kubectl get all'
                         }   
                     
-                }
+                }    
             }
+        }        
     }
 }
