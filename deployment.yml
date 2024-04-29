@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
         - name: python
-          image: shubhangihshinde/frontend-3tier
+          image: shubhangihshinde/frontend-3tier:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -84,7 +84,7 @@ spec:
     spec:
       containers:
         - name: python
-          image: shubhangihshinde/backend-3tier
+          image: shubhangihshinde/backend-3tier:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8070
