@@ -22,7 +22,9 @@ pipeline {
             steps {
                 echo 'Building the image'
                 sh "docker build -t bakend-3tier ."
-                sh "docker build -f ./sca_vite/Dockerfile -t frontend-3tier ."
+                dir(/sca_vite){
+                sh "docker build -t frontend-3tier ."
+                }
             }
         }
         stage('Push') {
