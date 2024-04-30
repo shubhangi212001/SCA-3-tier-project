@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 
     
-host = "172.16.22.122:3306" 
+host = "172.16.22.122:30300" 
 username = "root" 
 password = "support#123" 
 database = "CSV_DB" 
