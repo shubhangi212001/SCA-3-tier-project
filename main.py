@@ -664,5 +664,5 @@ def make_api_call(url, headers):
  
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", host='172.16.22.122', port=8070, log_level="error", reload = True)
+    uvicorn.run("main:app", host='172.16.22.122', port=30300, log_level="error", reload = True)
     print("running")
