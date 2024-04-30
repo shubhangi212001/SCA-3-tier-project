@@ -29,8 +29,8 @@ pipeline {
             steps {
                 echo 'Pushing docker image on Docker Hub'
                 withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', passwordVariable: 'dockerHubpass', usernameVariable: 'dockerHubuser')]) {
-                    //sh "docker tag bakend-3tier ${env.dockerHubuser}/bakend-3tier:latest"
-                    //sh "docker tag frontend-3tier ${env.dockerHubuser}/frontend-3tier:latest"
+                    sh "docker tag bakend-3tier ${env.dockerHubuser}/bakend-3tier:latest"
+                    sh "docker tag frontend-3tier ${env.dockerHubuser}/frontend-3tier:latest"
                     sh "docker login -u ${env.dockerHubuser} -p ${env.dockerHubpass}"
                     sh "docker push ${env.dockerHubuser}/bakend-3tier:latest"
                     sh "docker push ${env.dockerHubuser}/frontend-3tier:latest"
@@ -43,8 +43,8 @@ pipeline {
                 script{
                     
                         withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s_122', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                                sh 'kubectl delete -f deployment.yml'
-                                sh 'kubectl delete -f service.yml'
+                               // sh 'kubectl delete -f deployment.yml'
+                               // sh 'kubectl delete -f service.yml'
                                 sh 'kubectl apply -f deployment.yml'
                                 sh 'kubectl apply -f service.yml'
                                 sh 'kubectl get svc'
