@@ -4,7 +4,7 @@ WORKDIR /sca_vite
 
 EXPOSE 3000
 
-COPY ./sca_vite/package.json package-lock.json ./
+COPY ./sca_vite/package*.json ./
 
 RUN npm install
 
