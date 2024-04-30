@@ -43,8 +43,8 @@ pipeline {
                 script{
                     
                         withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s_122', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                               // sh 'kubectl delete -f deployment.yml'
-                               // sh 'kubectl delete -f service.yml'
+                                sh 'kubectl delete -f deployment.yml'
+                                sh 'kubectl delete -f service.yml'
                                 sh 'kubectl apply -f deployment.yml'
                                 sh 'kubectl apply -f service.yml'
                                 sh 'kubectl get svc'
