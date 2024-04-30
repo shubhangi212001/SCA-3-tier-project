@@ -84,7 +84,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: shubhangihshinde/backend-3tier:latest
+          image: shubhangihshinde/bakend-3tier:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8070
