@@ -6,7 +6,7 @@ EXPOSE 3000
 
 COPY .*.json ./
 
-RUN npm install --silent
+RUN npm install
 
 COPY . ./
 
